@@ -21,3 +21,7 @@ function Euler_Explicite(F,X₀,Δt,n,α,β)
     end
     return U
 end
+
+function sains_SIR(R,α,β)
+    return exp(-β*R/α)
+end
