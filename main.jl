@@ -11,8 +11,8 @@ function main()
         push!(I_SIS,U[i][2])
     end
     T = LinRange(0,n*Δt,n)
-    plot(T,S_SIS,title="modèle SIS",label="sains",lw=3,yaxis="pourcentage de la poulation")
-    plot!(T,I_SIS,label="infectés",lw=3)
+    p=plot(T,S_SIS,title="modèle SIS",label="sains",lw=3,yaxis="pourcentage de la poulation")
+    plot!(p,T,I_SIS,label="infectés",lw=3)
     xlabel!("le temps en mois")
 end
 main()

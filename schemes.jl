@@ -25,3 +25,8 @@ end
 function sains_SIR(R,α,β)
     return exp(-β*R/α)
 end
+
+function infectés_SIS(t,α,β,I₀,N)
+    r=β*N
+    return 1/β*(1/(1-exp(-r*t)*(1-1/(I₀*β))))
+end
