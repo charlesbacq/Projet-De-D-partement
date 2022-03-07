@@ -40,5 +40,6 @@ end
 
 function infectés_SIS(t,α,β,I₀,N)
     r=β*N-α
-    return 1/β*(1/(1-exp(-r*t)*(1-1/(I₀*β))))
+    K=r/β
+    return K*(1/(1-exp(-r*t)*(1-K/I₀)))
 end
