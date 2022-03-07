@@ -22,11 +22,23 @@ function Euler_Explicite(F,X₀,Δt,n,α,β)
     return U
 end
 
+function Runge_Kutta_ordre4(F,X₀,Δt,n,α,β)
+    U=[X₀]
+    for i in 1:n
+        k₁=F(U[i],α,β)
+        k₂=F(U[i]+k₁*Δt/2,α,β)
+        k₃=F(U[i]+k₂*Δt/2,α,β)
+        k₄=F(U[i]+k₃*Δt,α,β)
+        push!(U,U[i]+Δt/6*(k₁+2*k₂+2*k₃+k₄))
+    end
+    return U
+end
+
 function sains_SIR(R,α,β)
     return exp(-β*R/α)
 end
 
 function infectés_SIS(t,α,β,I₀,N)
-    r=β*N
+    r=β*N-α
     return 1/β*(1/(1-exp(-r*t)*(1-1/(I₀*β))))
 end
