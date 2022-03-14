@@ -13,10 +13,10 @@ function main()
         push!(R_SIR,N-U[i][1]-U[i][2])
     end
     T = LinRange(0,n*Δt,n)
-    p=plot(T,S_SIR,label="sains",lw=3,yaxis="pourcentage de la poulation")
+    p=plot(T,S_SIR,label="sains",lw=3,yaxis="pourcentage de la population")
     plot!(p,T,I_SIR,label="infectés",lw=3)
     plot!(p,T,R_SIR,label="infectés",lw=3)
-    xlabel!(p,"le temps en mois")
+    xlabel!(p,"temps")
     v=plot(R_SIR,S_SIR,lw=3,linestyle=:dash,label="obtention numérique",xaxis="pourcentage de recovered",yaxis="pourcentage de sains")
     X=[]
     for i in 1:n 
@@ -24,5 +24,7 @@ function main()
     end
     plot!(v,R_SIR,X,lw=1,label="prédiction mathématique")
     plot(p,v)
+    savefig(p,"Modèle_SIR")
+    savefig(v,"prévision_mathématiques_SIR")
 end
 main()
