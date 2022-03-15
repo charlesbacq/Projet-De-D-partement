@@ -7,7 +7,10 @@ end
 function euler(F,α,β,i₀)
     I=[i₀]
     for t in 1:n
-        U=[0]*nₓ
+        U=[]
+        for i in 1:nₓ
+            push!(U,0)
+        end
         for x in 2:(nₓ-1)
             U[x]=I[t][x]+Δt*F(I[t],α,β,x)
         end
